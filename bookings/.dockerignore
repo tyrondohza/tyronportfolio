@@ -1,0 +1,4 @@
+.git
+node_modules
+bookings/data.json
+bookings/data.json.*.tmp

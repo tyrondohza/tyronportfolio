@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Manage The Good Cut barber shop, appointments, staff, and services.">
+	<title>Shop Owner | The Good Cut</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+	<script src="owner.js" defer></script>
+</head>
+<body class="barber-page owner-page">
+	<header class="site-header">
+		<a class="brand" href="index.html" aria-label="The Good Cut home"><span class="brand-mark">GC</span><span>THE GOOD CUT<small>SHOP OWNER</small></span></a>
+		<a class="back-link" href="index.html">Public booking page <span aria-hidden="true">↗</span></a>
+		<button class="account-button hidden" id="ownerSignOut" type="button">Sign out</button>
+	</header>
+	<main class="owner-dashboard">
+		<section class="owner-heading">
+			<div><p class="eyebrow">SHOP MANAGEMENT</p><h1 id="ownerHeading">The shop,<br><em>in good hands.</em></h1><p class="dashboard-intro">Appointments, people, and the details that keep the chairs moving.</p></div>
+			<nav class="owner-nav hidden" id="ownerNav" aria-label="Owner dashboard sections"><a href="#ownerBookings">Bookings</a><a href="#ownerBarbers">Barbers</a><a href="#ownerServices">Services</a><a href="#ownerSettings">Shop settings</a></nav>
+		</section>
+
+		<section class="owner-access hidden" id="ownerAccess" aria-labelledby="ownerAccessTitle">
+			<p class="eyebrow">OWNER ACCESS</p>
+			<h2 id="ownerAccessTitle">Sign in to the <em>shop.</em></h2>
+			<div class="auth-tabs" id="ownerAccessTabs" role="tablist" aria-label="Owner account access">
+				<button class="auth-tab active" type="button" id="ownerLoginTab" role="tab" aria-selected="true">Sign in</button>
+				<button class="auth-tab hidden" type="button" id="ownerSetupTab" role="tab" aria-selected="false">First-time setup</button>
+			</div>
+			<p class="owner-access-note" id="ownerAccessNote">Sign in with the shop owner account.</p>
+			<form id="ownerAccessForm" data-mode="login">
+				<label class="auth-field hidden" id="ownerNameField" for="ownerName">Your name<input id="ownerName" name="name" autocomplete="name"></label>
+				<label class="auth-field" for="ownerEmail">Owner email<input id="ownerEmail" name="email" type="email" autocomplete="username" required></label>
+				<label class="auth-field" for="ownerPassword">Password<input id="ownerPassword" name="password" type="password" autocomplete="current-password" minlength="12" required></label>
+				<label class="auth-field hidden" id="ownerCodeField" for="ownerCode">One-time setup code<input id="ownerCode" name="setupCode" type="password" autocomplete="off"></label>
+				<button class="primary-button" id="ownerAccessSubmit" type="submit">Sign in <span aria-hidden="true">↗</span></button>
+				<p class="form-message" id="ownerAccessMessage" role="status" aria-live="polite"></p>
+			</form>
+			<p class="demo-note">On this shop server, owner setup is available once and needs no setup code. <a class="access-inline-link" href="staff-signup.html#owner">Open owner sign-up ↗</a></p>
+		</section>
+
+		<section class="owner-workspace hidden" id="ownerWorkspace">
+			<div class="owner-metrics" id="ownerMetrics"></div>
+			<div class="owner-provider-status" id="ownerProviderStatus"></div>
+			<p class="form-message owner-feedback" id="ownerActionMessage" role="status" aria-live="polite"></p>
+
+			<section class="owner-section" id="ownerBookings">
+				<div class="owner-section-heading"><div><p class="eyebrow">THE DAILY RUN</p><h2>All <em>bookings.</em></h2></div><p id="bookingCount"></p></div>
+				<div class="owner-booking-list" id="ownerBookingList" aria-live="polite"></div>
+			</section>
+
+			<section class="owner-section" id="ownerBarbers">
+				<div class="owner-section-heading"><div><p class="eyebrow">THE PEOPLE</p><h2>Your <em>barbers.</em></h2></div><p>Profiles can be deactivated without losing appointment history.</p></div>
+				<div class="owner-barber-list" id="ownerBarberList"></div>
+				<form class="owner-add-form" id="addBarberForm">
+					<label for="newBarberName">New barber<input id="newBarberName" name="name" placeholder="Name" required minlength="2"></label>
+					<label for="newBarberSpecialty">Specialty<input id="newBarberSpecialty" name="specialty" placeholder="Fades & texture" required minlength="2"></label>
+					<button class="primary-button" type="submit">Add barber <span aria-hidden="true">↗</span></button>
+				</form>
+			</section>
+
+			<section class="owner-section" id="ownerServices">
+				<div class="owner-section-heading"><div><p class="eyebrow">THE MENU</p><h2>Services & <em>prices.</em></h2></div><button class="outline-button owner-save-button" type="button" id="saveServices">Save service changes</button></div>
+				<div class="owner-service-list" id="ownerServiceList"></div>
+				<form class="owner-add-form owner-service-add" id="addServiceForm">
+					<label for="newServiceName">New service<input id="newServiceName" name="name" placeholder="Hot towel shave" required minlength="2"></label>
+					<label for="newServicePrice">Price<input id="newServicePrice" name="price" type="number" min="0" step="1" required></label>
+					<label for="newServiceDuration">Minutes<input id="newServiceDuration" name="duration" type="number" min="5" max="300" step="5" required></label>
+					<button class="outline-button" type="submit">Add to menu</button>
+				</form>
+				<p class="form-message owner-feedback" id="serviceMessage" role="status" aria-live="polite"></p>
+			</section>
+
+			<section class="owner-section" id="ownerSettings">
+				<div class="owner-section-heading"><div><p class="eyebrow">WHEN THE DOOR IS OPEN</p><h2>Shop <em>settings.</em></h2></div></div>
+				<form class="owner-settings-form" id="ownerSettingsForm">
+					<label for="shopOpening">Opening time<input id="shopOpening" name="openingTime" type="time" required></label>
+					<label for="shopClosing">Closing time<input id="shopClosing" name="closingTime" type="time" required></label>
+					<label for="shopCancellation">Minimum notice to cancel (hours)<input id="shopCancellation" name="cancellationHours" type="number" min="0" max="168" step="1" required></label>
+					<label for="shopCurrency">Currency code<input id="shopCurrency" name="currency" type="text" minlength="3" maxlength="3" pattern="[A-Z]{3}" required></label>
+					<button class="primary-button" type="submit">Save shop settings <span aria-hidden="true">↗</span></button>
+				</form>
+				<p class="form-message owner-feedback" id="settingsMessage" role="status" aria-live="polite"></p>
+			</section>
+		</section>
+	</main>
+	<footer class="site-footer"><a class="brand" href="index.html"><span class="brand-mark">GC</span><span>THE GOOD CUT<small>SHOP OWNER</small></span></a><p>Good work, good company. See you soon.</p><span>© 2026 THE GOOD CUT</span></footer>
+</body>
+</html>

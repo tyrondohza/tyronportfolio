@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Sign in or activate your barber account at The Good Cut.">
+	<title>Barber Sign In | The Good Cut</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+	<script src="barber-access.js" defer></script>
+</head>
+<body class="barber-page barber-access-page">
+	<header class="site-header">
+		<a class="brand" href="index.html" aria-label="The Good Cut home"><span class="brand-mark">GC</span><span>THE GOOD CUT<small>BARBER HOUSE</small></span></a>
+		<a class="back-link" href="barber.html">Barber desk <span aria-hidden="true">↗</span></a>
+	</header>
+	<main class="barber-dashboard">
+		<section class="barber-dashboard-heading">
+			<div>
+				<p class="eyebrow">FOR THE PEOPLE BEHIND THE CHAIR</p>
+				<h1>Your work.<br><em>Your place.</em></h1>
+				<p class="dashboard-intro">Sign in to see your bookings, or activate the account set up for your barber profile.</p>
+			</div>
+			<div class="dashboard-date"><span class="live-dot"></span><span>STAFF ACCESS</span></div>
+		</section>
+
+		<section class="barber-login access-panel" aria-labelledby="accessTitle">
+			<p class="eyebrow">THE GOOD CUT TEAM</p>
+			<h2 id="accessTitle">Welcome to your <em>chair.</em></h2>
+			<div class="auth-tabs" role="tablist" aria-label="Barber account access">
+				<button class="auth-tab active" type="button" id="signInTab" role="tab" aria-selected="true">Sign in</button>
+				<button class="auth-tab" type="button" id="activateTab" role="tab" aria-selected="false">New hire</button>
+			</div>
+			<p class="access-intro" id="accessIntro">Sign in with your barber account to manage your appointments.</p>
+			<form id="barberAccessForm" data-mode="signin">
+				<label class="auth-field hidden" id="nameField" for="barberName">Your name<input id="barberName" name="name" autocomplete="name"></label>
+				<label class="auth-field" for="barberEmail">Email address<input id="barberEmail" name="email" type="email" autocomplete="username" required></label>
+				<label class="auth-field hidden" id="phoneField" for="barberPhone">Mobile number for reminders <span>(optional)</span><input id="barberPhone" name="phone" type="tel" autocomplete="tel" placeholder="+1 555 0100"></label>
+				<label class="auth-consent hidden" id="barberPhoneConsent"><input id="barberSmsOptIn" name="smsOptIn" type="checkbox"><span>I agree to receive appointment updates and reminders by text.</span></label>
+				<label class="auth-field" for="barberPassword">Password<input id="barberPassword" name="password" type="password" autocomplete="current-password" minlength="12" required></label>
+				<label class="auth-field hidden" id="profileField" for="barberProfile">Your barber profile<select id="barberProfile" name="barberId"></select></label>
+				<label class="auth-field hidden" id="inviteField" for="barberInvite">Shop invite code<input id="barberInvite" name="inviteCode" type="password" autocomplete="off"></label>
+				<button class="primary-button access-submit" type="submit" id="accessSubmit">Sign in to barber desk <span aria-hidden="true">↗</span></button>
+				<p class="form-message" id="accessMessage" role="status" aria-live="polite"></p>
+			</form>
+			<p class="demo-note" id="accessNote">Newly hired? Ask the shop owner for your invite code, then <a class="access-inline-link" href="staff-signup.html#employee">create your employee account ↗</a>.</p>
+		</section>
+	</main>
+	<footer class="site-footer"><a class="brand" href="index.html"><span class="brand-mark">GC</span><span>THE GOOD CUT<small>BARBER HOUSE</small></span></a><p>Good work, good company. See you soon.</p><span>© 2026 THE GOOD CUT</span></footer>
+</body>
+</html>

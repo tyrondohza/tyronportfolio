@@ -3,41 +3,166 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Delicious Bites restaurant menu and story.">
-    <title>Delicious Bites | Restaurant</title>
+    <meta name="description" content="Stay at Alder House, a considered boutique hotel for slow mornings and memorable nights.">
+    <title>Alder House | Boutique Hotel</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="hotel.css">
+    <script src="hotel.js" defer></script>
 </head>
-<body>
-    <header class="site-header">
-        <a class="logo" href="../index.html">T<span>.</span></a>
-        <a class="back-link" href="../index.html">Back to portfolio <span aria-hidden="true">↗</span></a>
+<body class="hotel-page">
+    <header class="site-header hotel-header">
+        <a class="hotel-brand" href="#top" aria-label="Alder House home"><span class="hotel-brand-mark">A</span><span>ALDER HOUSE<small>A BOUTIQUE HOTEL</small></span></a>
+        <nav class="hotel-nav" aria-label="Main navigation">
+            <a href="#rooms">Stay</a>
+            <a href="#package">The package</a>
+            <a href="#experience">The experience</a>
+            <a href="#guide">Explore</a>
+            <a href="#reviews">Guestbook</a>
+        </nav>
+        <a class="hotel-nav-cta" href="#reserve">Find your stay <span aria-hidden="true">↗</span></a>
     </header>
-    <main>
-        <section class="hero">
-            <div>
-                <p class="eyebrow">Restaurant concept · Since 2010</p>
-                <h1>Good food.<br><em>Good company.</em></h1>
-                <p>Explore the Delicious Bites menu, made for slow afternoons, shared plates, and memorable evenings.</p>
-                <a class="button" href="#menu">Explore the menu <span aria-hidden="true">↓</span></a>
+    <main id="top">
+        <section class="hotel-hero">
+            <div class="hotel-hero-copy">
+                <p class="hotel-eyebrow"><span></span> A SMALL HOTEL WITH ROOM TO BREATHE</p>
+                <h1>Stay a little<br><em>closer to calm.</em></h1>
+                <p class="hotel-hero-description">Thoughtful rooms, unhurried mornings, and the kind of welcome that makes a new place feel familiar.</p>
+                <a class="hotel-primary-link" href="#reserve">Find your room <span aria-hidden="true">↓</span></a>
+                <div class="hotel-proof"><span aria-label="Five out of five stars">★★★★★</span><p>Quietly considered. Happily remembered.</p></div>
             </div>
-            <img src="Snapchat-304516376.jpg" alt="The warm interior of Delicious Bites">
-        </section>
-        <section class="story" id="history">
-            <div class="section-label">01 / Our story</div>
-            <div><h2>Made with care,<br><em>served with joy.</em></h2><p>Delicious Bites was founded with a simple goal: to bring high-quality, flavorful dishes to our community. Our menu celebrates familiar favorites, fresh ingredients, and the pleasure of eating together.</p></div>
-        </section>
-        <section class="menu-section" id="menu">
-            <div class="section-heading"><div class="section-label">02 / The menu</div><p>Something comforting for every appetite.</p></div>
-            <div class="menu-grid">
-                <article class="menu-card"><img src="Snapchat-515374116.jpg" alt="A selection of appetizers"><div><p class="menu-number">01</p><h3>Appetizers</h3><p>Garlic bread, mozzarella sticks, and chicken wings.</p></div></article>
-                <article class="menu-card"><img src="Snapchat-1716620053.jpg" alt="A main course dish"><div><p class="menu-number">02</p><h3>Main courses</h3><p>Grilled salmon, spaghetti carbonara, and veggie burgers.</p></div></article>
-                <article class="menu-card"><img src="Snapchat-79705.jpg" alt="A selection of desserts"><div><p class="menu-number">03</p><h3>Desserts</h3><p>Chocolate lava cake, tiramisu, and fresh fruit salad.</p></div></article>
+            <div class="hotel-hero-visual">
+                <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=1500&q=85" alt="A light-filled boutique hotel bedroom with a king bed and warm natural finishes">
+                <div class="hotel-photo-caption"><span>ALDER HOUSE · THE SUITES</span><strong>Make room for a better morning.</strong></div>
+                <span class="hotel-photo-index">01 <i></i> 03</span>
             </div>
         </section>
+
+        <section class="stay-search" id="reserve" aria-labelledby="reserveTitle">
+            <div class="stay-search-heading"><p class="hotel-eyebrow">YOUR NEXT GOOD NIGHT</p><h2 id="reserveTitle">Plan your <em>stay.</em></h2></div>
+            <form id="stayForm" class="stay-form">
+                <input id="selectedRoom" name="room" type="hidden" value="">
+                <input id="selectedRoomRate" name="roomRate" type="hidden" value="">
+                <input id="selectedRoomCapacity" name="roomCapacity" type="hidden" value="">
+                <label for="checkIn">Check in<input id="checkIn" name="checkIn" type="date" required></label>
+                <label for="checkOut">Check out<input id="checkOut" name="checkOut" type="date" required></label>
+                <label for="guestCount">Guests<select id="guestCount" name="guests"><option value="1">1 guest</option><option value="2" selected>2 guests</option><option value="3">3 guests</option><option value="4">4 guests</option></select></label>
+                <button class="hotel-search-button" type="submit">Check availability <span aria-hidden="true">↗</span></button>
+            </form>
+            <p class="stay-search-message" id="staySearchMessage" role="status" aria-live="polite"></p>
+            <div class="stay-request-preview" id="stayRequestPreview" hidden>
+                <div><p class="hotel-eyebrow">YOUR STAY REQUEST</p><strong id="stayRequestTitle">Choose your dates</strong><span id="stayRequestDetails"></span></div>
+                <div class="stay-request-actions"><span id="stayRequestEstimate"></span><button id="openGuestDetails" class="hotel-search-button" type="button" disabled>Continue request <span aria-hidden="true">↗</span></button></div>
+            </div>
+        </section>
+
+        <section class="hotel-rooms" id="rooms">
+            <div class="hotel-section-heading"><div><p class="hotel-eyebrow">A ROOM TO CALL YOURS</p><h2>Find your <em>kind of stay.</em></h2></div><p>Three ways to settle in.<br>Each one made for switching off.</p></div>
+            <div class="room-grid">
+                <article class="room-card">
+                    <button class="room-image" type="button" data-gallery-room="0" aria-label="View the Garden Room photo gallery"><img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=900&q=82" alt="A serene garden-facing hotel room with a king bed"><span>01 / THE GARDEN ROOM</span><span class="room-gallery-hint">View gallery <b aria-hidden="true">↗</b></span></button>
+                    <div class="room-details"><div><h3>The Garden Room</h3><p>King bed · Garden view · 2 guests</p></div><span class="room-rate">From <strong>$145</strong><small>/ night</small></span></div>
+                    <button class="room-select" type="button" data-room="The Garden Room" data-rate="145" data-capacity="2">Choose this room <span aria-hidden="true">↗</span></button>
+                </article>
+                <article class="room-card">
+                    <button class="room-image" type="button" data-gallery-room="1" aria-label="View the Corner Suite photo gallery"><img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=900&q=82" alt="A spacious hotel suite with a sitting area and soft daylight"><span>02 / THE CORNER SUITE</span><span class="room-gallery-hint">View gallery <b aria-hidden="true">↗</b></span></button>
+                    <div class="room-details"><div><h3>The Corner Suite</h3><p>King bed · Sitting area · 3 guests</p></div><span class="room-rate">From <strong>$210</strong><small>/ night</small></span></div>
+                    <button class="room-select" type="button" data-room="The Corner Suite" data-rate="210" data-capacity="3">Choose this room <span aria-hidden="true">↗</span></button>
+                </article>
+                <article class="room-card">
+                    <button class="room-image" type="button" data-gallery-room="2" aria-label="View the House Loft photo gallery"><img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=900&q=82" alt="A warm modern hotel room with a lounge chair and textured finishes"><span>03 / THE HOUSE LOFT</span><span class="room-gallery-hint">View gallery <b aria-hidden="true">↗</b></span></button>
+                    <div class="room-details"><div><h3>The House Loft</h3><p>King bed · Deep soaking tub · 2 guests</p></div><span class="room-rate">From <strong>$185</strong><small>/ night</small></span></div>
+                    <button class="room-select" type="button" data-room="The House Loft" data-rate="185" data-capacity="2">Choose this room <span aria-hidden="true">↗</span></button>
+                </article>
+            </div>
+        </section>
+
+        <section class="hotel-package" id="package">
+            <div class="package-copy"><p class="hotel-eyebrow">THE WEEKEND RESET · SAMPLE PACKAGE</p><h2>Two nights.<br><em>A slower pace.</em></h2><p>Make a weekend of it with breakfast for two, an unhurried late checkout, and a little more room to do nothing.</p><ul><li>Two nights in a room of your choice</li><li>Breakfast for two each morning</li><li>Late checkout, subject to availability</li></ul><p class="package-disclaimer">Preview package concept. Dates, inclusions, and pricing must be confirmed by the hotel.</p><button class="hotel-text-link package-choose" type="button" data-package-room="The Garden Room" data-package-rate="145">Start with the Garden Room <span aria-hidden="true">↗</span></button></div>
+            <div class="package-image"><img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1200&q=85" alt="A quiet courtyard pool for a slow hotel weekend"><span>AN ALDER HOUSE WEEKEND</span></div>
+        </section>
+
+        <section class="hotel-experience" id="experience">
+            <div class="experience-image"><img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1200&q=85" alt="A quiet hotel courtyard pool surrounded by greenery"></div>
+            <div class="experience-copy"><p class="hotel-eyebrow">THE PLEASURE IS IN THE DETAILS</p><h2>Nothing to rush.<br><em>Everything to enjoy.</em></h2><p>Take breakfast slowly. Find a sunny corner. Let the day arrive when it’s ready.</p><div class="amenity-list"><span>01 <b>Breakfast, made fresh</b></span><span>02 <b>A courtyard to exhale in</b></span><span>03 <b>Thoughtful local recommendations</b></span></div><a class="hotel-text-link" href="#about">A little about us <span aria-hidden="true">↗</span></a></div>
+        </section>
+
+        <section class="hotel-guide" id="guide">
+            <div class="hotel-section-heading"><div><p class="hotel-eyebrow">OUTSIDE YOUR WINDOW · SAMPLE GUIDE</p><h2>Take the <em>long way.</em></h2></div><p>Some ideas for finding the feeling of a place.<br>Replace these with real local favorites.</p></div>
+            <div class="guide-grid">
+                <article class="guide-card"><img src="https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&w=900&q=80" alt="Fresh produce at a neighborhood market"><p>01 / A SLOW START</p><h3>Find the morning market</h3><span>Pick up something fresh, then take the scenic route back.</span></article>
+                <article class="guide-card"><img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=900&q=80" alt="A peaceful waterside walking path"><p>02 / GET SOME AIR</p><h3>Follow the water</h3><span>An easy walk, a little open sky, and nowhere you need to be.</span></article>
+                <article class="guide-card"><img src="https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?auto=format&fit=crop&w=900&q=80" alt="Colorful artwork in a small gallery"><p>03 / A CHANGE OF SCENE</p><h3>Spend an hour in a gallery</h3><span>Find a small exhibition and let one thing catch your eye.</span></article>
+            </div>
+            <p class="guide-note">Neighborhood ideas are sample copy, not verified nearby venues. Ask the hotel for current local recommendations.</p>
+        </section>
+
+        <section class="hotel-reviews" id="reviews">
+            <div class="review-heading"><p class="hotel-eyebrow">NOTES FROM THE GUESTBOOK · PREVIEW COPY</p><h2>A stay is made<br><em>of little things.</em></h2><p>Sample quotes shown for the design preview. Replace with real guest feedback before publishing.</p></div>
+            <div class="review-content">
+                <div class="sample-reviews" id="sampleReviews">
+                    <blockquote><span>★★★★★</span><p>“The kind of place that makes you forget to check the time.”</p><cite>Preview quote · replace with a real guest review</cite></blockquote>
+                    <blockquote><span>★★★★★</span><p>“A quiet room, a lovely breakfast, and nowhere else to be.”</p><cite>Preview quote · replace with a real guest review</cite></blockquote>
+                </div>
+                <form id="guestReviewForm" class="guest-review-form">
+                    <p class="hotel-eyebrow">LEAVE A NOTE</p>
+                    <label for="reviewName">Your name<input id="reviewName" name="name" required maxlength="50"></label>
+                    <label for="reviewRating">Your rating<select id="reviewRating" name="rating" required><option value="">Choose a rating</option><option value="5">5 stars</option><option value="4">4 stars</option><option value="3">3 stars</option><option value="2">2 stars</option><option value="1">1 star</option></select></label>
+                    <label for="reviewComment">Your note<textarea id="reviewComment" name="comment" rows="3" required maxlength="240" placeholder="What made the stay memorable?"></textarea></label>
+                    <button class="hotel-search-button" type="submit">Save guest note <span aria-hidden="true">↗</span></button>
+                    <p class="guest-review-message" id="guestReviewMessage" role="status" aria-live="polite">Notes save in this browser only and are not verified or published to other guests.</p>
+                </form>
+                <div class="local-guest-notes" id="guestReviewList" aria-live="polite"></div>
+            </div>
+        </section>
+
+        <section class="request-tracker" id="requests">
+            <div><p class="hotel-eyebrow">YOUR SAVED REQUESTS · THIS BROWSER</p><h2>Pick up where<br><em>you left off.</em></h2><p>Look up stay requests saved on this device. Requests are not confirmed until the hotel replies.</p></div>
+            <form id="requestLookupForm" class="request-lookup-form"><label for="lookupEmail">Email used for your request<input id="lookupEmail" name="email" type="email" autocomplete="email" required></label><button class="outline-button" type="submit">Find my requests <span aria-hidden="true">↗</span></button><div id="requestLookupResults" class="request-lookup-results" aria-live="polite"></div></form>
+        </section>
+
+        <section class="hotel-story" id="about"><p class="hotel-eyebrow">A GOOD PLACE TO LAND</p><h2>Small enough to feel personal.<br><em>Thoughtful enough to feel special.</em></h2><p>Alder House is a boutique hotel concept built around warm service, considered spaces, and a stay that feels like your own.</p></section>
     </main>
-    <footer><p>Questions or reservations? <a href="mailto:dohzatyron0@gmail.com">dohzatyron0@gmail.com</a></p><p>076 831 0269 · © 2026 Delicious Bites</p></footer>
+
+    <footer class="hotel-footer"><a class="hotel-brand" href="#top"><span class="hotel-brand-mark">A</span><span>ALDER HOUSE<small>A BOUTIQUE HOTEL</small></span></a><p>Questions or reservations? <a href="mailto:dohzatyron0@gmail.com">Get in touch</a></p><a class="portfolio-link" href="../index.html">Back to portfolio ↗</a><span>© 2026 ALDER HOUSE</span></footer>
+
+    <dialog class="room-gallery-dialog" id="roomGallery" aria-labelledby="galleryTitle">
+        <div class="gallery-shell">
+            <div class="gallery-photo-stage" id="galleryPhotoStage">
+                <img id="galleryPhoto" src="" alt="">
+                <button class="gallery-arrow gallery-previous" id="galleryPrevious" type="button" aria-label="Previous room photo">‹</button>
+                <button class="gallery-arrow gallery-next" id="galleryNext" type="button" aria-label="Next room photo">›</button>
+                <span class="gallery-count" id="galleryCount"></span>
+            </div>
+            <div class="gallery-details">
+                <button class="gallery-close" id="galleryClose" type="button" aria-label="Close room gallery">×</button>
+                <p class="hotel-eyebrow">ALDER HOUSE · THE ROOMS</p>
+                <h2 id="galleryTitle"></h2>
+                <p id="galleryDescription"></p>
+                <p class="gallery-swipe-note">Swipe or use the arrows to explore.</p>
+                <button class="hotel-primary-link" id="galleryChooseRoom" type="button">Choose this room <span aria-hidden="true">↗</span></button>
+            </div>
+        </div>
+    </dialog>
+    <dialog class="guest-details-dialog" id="guestDetailsDialog" aria-labelledby="guestDetailsDialogTitle">
+        <div class="guest-dialog-heading"><div><p class="hotel-eyebrow">A FEW DETAILS FOR THE HOTEL</p><h2 id="guestDetailsDialogTitle">Your stay, <em>your way.</em></h2></div><button class="gallery-close" id="guestDetailsClose" type="button" aria-label="Close guest details">×</button></div>
+        <p class="guest-dialog-summary" id="guestDialogSummary"></p>
+        <form id="guestDetailsForm" class="guest-details-form">
+            <label for="guestFullName">Full name<input id="guestFullName" name="name" autocomplete="name" required maxlength="80"></label>
+            <label for="guestEmail">Email address<input id="guestEmail" name="email" type="email" autocomplete="email" required></label>
+            <label for="guestPhone">Phone number <span>(optional)</span><input id="guestPhone" name="phone" type="tel" autocomplete="tel"></label>
+            <label for="guestNotes">Anything else we should know? <span>(optional)</span><textarea id="guestNotes" name="notes" rows="3" maxlength="300" placeholder="Arrival time, accessibility request, or a question"></textarea></label>
+            <button class="hotel-search-button" type="submit">Save request & prepare email <span aria-hidden="true">↗</span></button>
+            <p class="guest-details-disclaimer">This demo saves your request in this browser and opens an email draft. It does not check inventory or confirm a booking.</p>
+        </form>
+        <div class="guest-details-confirmation" id="guestDetailsConfirmation" hidden>
+            <p id="guestDetailsConfirmationText"></p>
+            <a class="hotel-primary-link" id="guestDetailsEmailLink" href="mailto:dohzatyron0@gmail.com">Open email draft <span aria-hidden="true">↗</span></a>
+            <a class="guest-track-link" href="#requests">Look up saved requests</a>
+        </div>
+        <p class="guest-details-message" id="guestDetailsMessage" role="status" aria-live="polite"></p>
+    </dialog>
 </body>
 </html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Manage your appointments at The Good Cut barber house.">
+	<title>Barber Desk | The Good Cut</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+	<script src="barber.js" defer></script>
+</head>
+<body class="barber-page">
+	<header class="site-header">
+		<a class="brand" href="index.html" aria-label="The Good Cut home"><span class="brand-mark">GC</span><span>THE GOOD CUT<small>BARBER HOUSE</small></span></a>
+		<a class="back-link" href="index.html">Back to bookings <span aria-hidden="true">↗</span></a>
+		<button class="account-button hidden" id="barberSignOut" type="button">Sign out</button>
+	</header>
+	<main class="barber-dashboard">
+		<section class="barber-dashboard-heading">
+			<div>
+				<p class="eyebrow">THE GOOD CUT · BARBER DESK</p>
+				<h1 id="dashboardTitle">Your chair,<br><em>your day.</em></h1>
+				<p class="dashboard-intro">A clear view of your appointments, from first hello to finished cut.</p>
+			</div>
+			<div class="dashboard-date"><span class="live-dot"></span><span id="currentDate"></span></div>
+		</section>
+
+		<section class="barber-login hidden" id="barberLogin" aria-labelledby="loginTitle">
+			<p class="eyebrow">STAFF ACCESS</p>
+			<h2 id="loginTitle">Sign in to your <em>chair.</em></h2>
+			<p id="loginNotice">Use your barber account to view and manage your appointments.</p>
+			<form id="barberLoginForm">
+				<label class="auth-field" for="barberEmail">Email address<input id="barberEmail" name="email" type="email" autocomplete="username" required></label>
+				<label class="auth-field" for="barberPassword">Password<input id="barberPassword" name="password" type="password" autocomplete="current-password" minlength="12" required></label>
+				<button class="primary-button" type="submit">Sign in to barber desk <span aria-hidden="true">↗</span></button>
+				<p class="form-message" id="loginMessage" role="status" aria-live="polite"></p>
+			</form>
+			<p class="demo-note">Newly hired? <a class="access-inline-link" href="barber-access.html">Activate your barber login ↗</a></p>
+		</section>
+
+		<section class="barber-workspace hidden" id="barberWorkspace" aria-labelledby="workspaceTitle">
+			<div class="workspace-heading">
+				<div><p class="eyebrow">YOUR APPOINTMENTS</p><h2 id="workspaceTitle">Today’s <em>lineup.</em></h2></div>
+				<p id="appointmentSummary"></p>
+				<button class="outline-button calendar-export" type="button" id="exportCalendar">Download calendar (.ics)</button>
+			</div>
+			<div class="appointment-tabs" role="tablist" aria-label="Appointment status">
+				<button class="appointment-tab active" id="upcomingTab" type="button" role="tab" aria-selected="true">Upcoming <span id="upcomingCount">0</span></button>
+				<button class="appointment-tab" id="completedTab" type="button" role="tab" aria-selected="false">Completed <span id="completedCount">0</span></button>
+			</div>
+			<div class="barber-appointment-list" id="barberAppointmentList" aria-live="polite"></div>
+			<p class="form-message dashboard-message" id="dashboardMessage" role="status" aria-live="polite"></p>
+		</section>
+	</main>
+	<footer class="site-footer"><a class="brand" href="index.html"><span class="brand-mark">GC</span><span>THE GOOD CUT<small>BARBER HOUSE</small></span></a><p>Good work, good company. See you soon.</p><span>© 2026 THE GOOD CUT</span></footer>
+</body>
+</html>

@@ -9,7 +9,7 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="style.css">
-	<script src="node.js" defer></script>
+	<script src="app.js" defer></script>
 </head>
 <body>
 	<header class="site-header">
@@ -18,6 +18,9 @@
 			<a href="#book">Book a visit</a>
 			<a href="#barbers">Our barbers</a>
 			<a href="#visits">My visits</a>
+			<a href="barber-access.html">Barber sign in</a>
+			<a href="staff-signup.html">Staff sign up</a>
+			<a href="owner.html">Owner dashboard</a>
 		</nav>
 		<button class="account-button" id="accountButton" type="button">Sign in <span aria-hidden="true">↗</span></button>
 	</header>
@@ -46,14 +49,7 @@
 			<form class="booking-form" id="bookingForm">
 				<fieldset class="service-fieldset">
 					<legend><span class="step-number">01</span> What are we doing today?</legend>
-					<div class="service-grid" id="serviceGrid">
-						<label class="service-option"><input type="checkbox" name="service" value="Haircut"><span class="service-name">Haircut</span><span class="service-meta">30 min <b>$18</b></span></label>
-						<label class="service-option"><input type="checkbox" name="service" value="Beard shave"><span class="service-name">Beard shave</span><span class="service-meta">20 min <b>$12</b></span></label>
-						<label class="service-option"><input type="checkbox" name="service" value="Head shave"><span class="service-name">Head shave</span><span class="service-meta">25 min <b>$15</b></span></label>
-						<label class="service-option"><input type="checkbox" name="service" value="Head + beard"><span class="service-name">Head + beard</span><span class="service-meta">45 min <b>$25</b></span></label>
-						<label class="service-option"><input type="checkbox" name="service" value="Massage"><span class="service-name">Relaxing massage</span><span class="service-meta">30 min <b>$20</b></span></label>
-						<label class="service-option"><input type="checkbox" name="service" value="Dye application"><span class="service-name">Dye application</span><span class="service-meta">45 min <b>$28</b></span></label>
-					</div>
+					<div class="service-grid" id="serviceGrid"></div>
 				</fieldset>
 
 				<div class="booking-details">
@@ -81,6 +77,7 @@
 					<p id="bookingTotal">Choose a service to see your total.</p>
 					<button class="primary-button" type="submit">Request a booking <span aria-hidden="true">↗</span></button>
 				</div>
+				<p class="booking-rules" id="bookingRules"></p>
 				<p class="form-message" id="bookingMessage" role="status" aria-live="polite"></p>
 			</form>
 		</section>
@@ -98,8 +95,8 @@
 		<section class="review-section" id="reviews">
 			<div><p class="eyebrow">LEAVE US LOOKING GOOD</p><h2>How was your <em>visit?</em></h2><p>Already stopped by? Tell us how we did.</p></div>
 			<form id="reviewForm" class="review-form">
-				<label for="reviewBarber">Your barber</label>
-				<select id="reviewBarber" required><option value="">Choose your barber</option></select>
+				<label for="reviewBooking">Your completed visit</label>
+				<select id="reviewBooking" required><option value="">Sign in to see completed visits</option></select>
 				<label for="reviewRating">Your rating</label>
 				<select id="reviewRating" required><option value="">Choose a rating</option><option value="5">5 stars · Excellent</option><option value="4">4 stars · Great</option><option value="3">3 stars · Good</option><option value="2">2 stars · Could be better</option><option value="1">1 star · Needs work</option></select>
 				<label for="reviewText">A few words <span>(optional)</span></label>
@@ -107,10 +104,11 @@
 				<button class="outline-button" type="submit">Leave a review <span aria-hidden="true">↗</span></button>
 				<p class="form-message" id="reviewMessage" role="status" aria-live="polite"></p>
 			</form>
+			<div class="review-feed" id="reviewList" aria-live="polite"></div>
 		</section>
 	</main>
 
-	<footer class="site-footer"><a class="brand" href="#top"><span class="brand-mark">GC</span><span>THE GOOD CUT<small>BARBER HOUSE</small></span></a><p>Good work, good company. See you soon.</p><span>© 2026 THE GOOD CUT</span></footer>
+	<footer class="site-footer"><a class="brand" href="#top"><span class="brand-mark">GC</span><span>THE GOOD CUT<small>BARBER HOUSE</small></span></a><a class="footer-staff-link" href="barber-access.html">Barber access ↗</a><a class="footer-staff-link" href="staff-signup.html">Staff sign up ↗</a><a class="footer-staff-link" href="owner.html">Owner dashboard ↗</a><p>Good work, good company. See you soon.</p><span>© 2026 THE GOOD CUT</span></footer>
 
 	<dialog class="account-dialog" id="accountDialog" aria-labelledby="dialogTitle">
 		<div class="dialog-top"><a class="brand" href="#top"><span class="brand-mark">GC</span><span>THE GOOD CUT<small>BARBER HOUSE</small></span></a><button class="close-button" type="button" id="closeDialog" aria-label="Close sign in">×</button></div>
@@ -121,23 +119,45 @@
 			<form id="authForm">
 				<label id="nameFieldWrap" class="auth-field hidden" for="authName">Your name<input id="authName" name="name" autocomplete="name"></label>
 				<label class="auth-field" for="authEmail">Email address<input id="authEmail" name="email" type="email" autocomplete="email" required></label>
-				<label class="auth-field" for="authPassword">Password<input id="authPassword" name="password" type="password" autocomplete="current-password" minlength="4" required></label>
+				<label class="auth-field hidden" id="phoneFieldWrap" for="authPhone">Mobile number for reminders <span>(optional)</span><input id="authPhone" name="phone" type="tel" autocomplete="tel" placeholder="+1 555 0100"></label>
+				<label class="auth-consent hidden" id="phoneConsentWrap"><input id="authSmsOptIn" name="smsOptIn" type="checkbox"><span>I agree to receive booking updates and reminders by text.</span></label>
+				<label class="auth-field" for="authPassword">Password<input id="authPassword" name="password" type="password" autocomplete="current-password" minlength="12" required></label>
 				<label class="auth-field hidden" id="roleFieldWrap" for="authRole">I’m signing in as<select id="authRole" name="role"><option value="client">Client</option><option value="barber">Barber</option></select></label>
 				<label class="auth-field hidden" id="staffFieldWrap" for="authBarber">My barber profile<select id="authBarber" name="barber"></select></label>
+				<label class="auth-field hidden" id="inviteFieldWrap" for="authInvite">Barber invite code<input id="authInvite" name="inviteCode" type="password" autocomplete="off"></label>
 				<button class="primary-button auth-submit" type="submit">Sign in <span aria-hidden="true">↗</span></button>
 				<p class="form-message" id="authMessage" role="status" aria-live="polite"></p>
 			</form>
-			<p class="demo-note">Demo prototype: accounts and bookings are saved only in this browser. Do not use a real password.</p>
+			<p class="demo-note">Accounts are secured and bookings are shared through this shop server. Barber accounts require an invite code from the shop owner.</p>
+		</div>
+		<div class="client-view hidden" id="clientView">
+			<p class="eyebrow">YOUR ACCOUNT</p>
+			<h2>Welcome, <em id="clientName">friend.</em></h2>
+			<p id="clientEmail"></p>
+			<button class="outline-button client-signout" id="clientSignOutButton" type="button">Sign out</button>
 		</div>
 		<div class="staff-view hidden" id="staffView">
 			<p class="eyebrow">BARBER DESK</p>
 			<h2 id="staffTitle">Your <em>chair.</em></h2>
 			<p>Set your status so clients know when they can book you.</p>
+			<label class="auth-field" for="staffAvailabilityDate">Availability date<input id="staffAvailabilityDate" type="date"></label>
 			<div class="staff-status-control"><span id="staffStatusText">Available for bookings</span><button id="staffStatusButton" type="button" class="status-toggle" aria-pressed="true">Mark as booked</button></div>
-			<h3>Today's appointments</h3>
+			<h3>Your appointments</h3>
 			<div id="staffAppointments" class="staff-appointments"></div>
+			<a class="outline-button full-dashboard-link" href="barber.html">Open full barber desk <span aria-hidden="true">↗</span></a>
 			<button class="outline-button signout-button" id="signOutButton" type="button">Sign out</button>
 		</div>
+	</dialog>
+
+	<dialog class="account-dialog manage-dialog" id="manageBookingDialog" aria-labelledby="manageTitle">
+		<div class="dialog-top"><strong id="manageTitle">Manage your visit</strong><button class="close-button" type="button" id="closeManageDialog" aria-label="Close booking details">×</button></div>
+		<form class="manage-form" id="manageBookingForm">
+			<input id="manageBookingId" type="hidden">
+			<label class="auth-field" for="manageDate">New date<input id="manageDate" type="date" required></label>
+			<label class="auth-field" for="manageTime">New time<select id="manageTime" required><option value="">Choose a date first</option></select></label>
+			<button class="primary-button" type="submit">Save new time <span aria-hidden="true">↗</span></button>
+			<p class="form-message" id="manageMessage" role="status" aria-live="polite"></p>
+		</form>
 	</dialog>
 </body>
 </html>

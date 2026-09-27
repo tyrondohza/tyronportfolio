@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Create an owner or employee account for The Good Cut barber house.">
+	<title>Staff Sign Up | The Good Cut</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+	<script src="staff-signup.js" defer></script>
+</head>
+<body class="barber-page staff-signup-page">
+	<header class="site-header">
+		<a class="brand" href="index.html" aria-label="The Good Cut home"><span class="brand-mark">GC</span><span>THE GOOD CUT<small>STAFF REGISTRATION</small></span></a>
+		<a class="back-link" href="index.html">Back to bookings <span aria-hidden="true">↗</span></a>
+	</header>
+	<main class="barber-dashboard">
+		<section class="barber-dashboard-heading">
+			<div>
+				<p class="eyebrow">GOOD PEOPLE MAKE A GOOD SHOP</p>
+				<h1>Make yourself<br><em>at home.</em></h1>
+				<p class="dashboard-intro">Create the shop owner account or activate the employee profile assigned to you.</p>
+			</div>
+			<div class="dashboard-date"><span class="live-dot"></span><span>STAFF ACCESS</span></div>
+		</section>
+
+		<section class="barber-login staff-signup-panel" aria-labelledby="signupTitle">
+			<p class="eyebrow">JOIN THE GOOD CUT</p>
+			<h2 id="signupTitle">Create your <em>account.</em></h2>
+			<div class="auth-tabs staff-signup-tabs" role="tablist" aria-label="Account type">
+				<button class="auth-tab active" type="button" id="employeeTab" role="tab" aria-selected="true">Employee</button>
+				<button class="auth-tab" type="button" id="ownerTab" role="tab" aria-selected="false">Shop owner</button>
+			</div>
+			<p class="access-intro" id="signupIntro">Activate the barber profile reserved for you by the shop.</p>
+			<form id="staffSignupForm" data-mode="employee">
+				<label class="auth-field" for="signupName">Your name<input id="signupName" name="name" autocomplete="name" minlength="2" maxlength="80" required></label>
+				<label class="auth-field" for="signupEmail">Email address<input id="signupEmail" name="email" type="email" autocomplete="email" required></label>
+				<label class="auth-field" id="signupPhoneField" for="signupPhone">Mobile number for reminders <span>(optional)</span><input id="signupPhone" name="phone" type="tel" autocomplete="tel" placeholder="+1 555 0100"></label>
+				<label class="auth-consent" id="signupSmsConsent"><input id="signupSmsOptIn" name="smsOptIn" type="checkbox"><span>I agree to receive appointment updates and reminders by text.</span></label>
+				<label class="auth-field hidden" id="signupProfileField" for="signupProfile">Your barber profile<select id="signupProfile" name="barberId"></select></label>
+				<label class="auth-field hidden" id="signupInviteField" for="signupInvite">Shop invite code<input id="signupInvite" name="inviteCode" type="password" autocomplete="off"></label>
+				<label class="auth-field hidden" id="signupOwnerCodeField" for="signupOwnerCode">One-time owner setup code<input id="signupOwnerCode" name="setupCode" type="password" autocomplete="off"></label>
+				<label class="auth-field" for="signupPassword">Create a password<input id="signupPassword" name="password" type="password" autocomplete="new-password" minlength="12" maxlength="128" required></label>
+				<button class="primary-button access-submit" id="signupSubmit" type="submit">Create employee account <span aria-hidden="true">↗</span></button>
+				<p class="form-message" id="signupMessage" role="status" aria-live="polite"></p>
+			</form>
+			<p class="demo-note" id="signupNote">Employees need the shop owner's invite code. Each barber profile can only be claimed once.</p>
+			<div class="staff-signup-links"><a href="barber-access.html">Already have a barber account? Sign in ↗</a><a href="owner.html">Already have an owner account? Sign in ↗</a></div>
+		</section>
+	</main>
+	<footer class="site-footer"><a class="brand" href="index.html"><span class="brand-mark">GC</span><span>THE GOOD CUT<small>STAFF REGISTRATION</small></span></a><p>Good work, good company. See you soon.</p><span>© 2026 THE GOOD CUT</span></footer>
+</body>
+</html>
