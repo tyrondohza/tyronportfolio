@@ -3,45 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MY PORTFOLIO</title>
+    <meta name="description" content="Tyron's portfolio of web development projects and creative digital work.">
+    <title>Tyron | Web Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-    </ul>
-    <p>Welcome to my portfolio website! Here you can find information about me, my skills, and the projects I have worked on. Feel free to explore and learn more about my work.</p>
-    <section id="home">
-        <h1>welcome to myportfolio</h1>
-        <p>This is my portfolio website where you can know about me and my work. I am a passionate developer with experience in web development, programming, and software engineering. Please take a look at my projects and feel free to contact me for any inquiries or collaborations.</p>
-        <img src="RobloxScreenShot20260314_164816868.png" alt="home page image" width="500">
-    </section>
+    <header class="site-header">
+        <a class="logo" href="#home" aria-label="Tyron home">T<span>.</span></a>
+        <nav aria-label="Main navigation">
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a class="nav-contact" href="#contact">Let's talk <span aria-hidden="true">↗</span></a>
+        </nav>
+    </header>
 
-    <section id="about">
-        <h2>About me</h2>
-        <p>My name is Tyron, and I am a dedicated and enthusiastic developer with a strong background in web development and programming. I have a passion for creating innovative solutions and continuously improving my skills. In my free time, I enjoy exploring new technologies, contributing to open-source projects, and collaborating with other developers to bring ideas to life.</p>
-        <img src="134149568461397408.jpg" alt="Tyron's Photo" width="500">   
-    </section>
+    <main>
+        <section class="hero" id="home">
+            <div class="hero-copy">
+                <p class="eyebrow">Web developer · Creative problem solver</p>
+                <h1>Building digital<br><em>experiences</em> with intent.</h1>
+                <p class="hero-intro">I'm Tyron, a passionate developer turning thoughtful ideas into useful, memorable websites and applications.</p>
+                <a class="button button-dark" href="#projects">Explore my work <span aria-hidden="true">↓</span></a>
+            </div>
+            <div class="hero-visual">
+                <div class="image-frame">
+                    <img src="RobloxScreenShot20260314_164816868.png" alt="A preview from Tyron's digital work">
+                </div>
+                <p class="image-note">Selected work<br><strong>01 / 03</strong></p>
+            </div>
+        </section>
 
-    <section id="projects">
-        <h3>My Projects</h3>
-        <p>Here are some of the projects I have worked on:</p>
-        <ul>
-            <li><strong>Project 1:</strong> A web application for task management.</li>
-            <li><strong>Project 2:</strong> A mobile app for fitness tracking.</li>
-            <li><strong>Project 3:</strong> An e-commerce website for online shopping.</li>
-        </ul>
-    </section>
-    <img src="134280587410704588.jpg" alt="conclusion" width="500">
-    <br>
-    <p>Thank you for visiting my portfolio website! I hope you found the information helpful and inspiring. If you have any questions or would like to collaborate on a project, please don't hesitate to reach out. I look forward to connecting with you!</p>
-    <p> Feel free to contact me at 0768310269</p>
-    <p>OR</p>
-    <p>My email is dohzatyron0@gmail.com</p>
-    <p>Thank you for your time and interest in my work!</p>
-    <p>&copy; 2026 Tyron's Portfolio. All rights reserved.</p>
+        <section class="about section-grid" id="about">
+            <div class="section-label">01 / About</div>
+            <div class="about-content">
+                <div class="about-photo"><img src="134149568461397408.jpg" alt="Portrait of Tyron"></div>
+                <div>
+                    <h2>Curious by nature.<br><em>Precise by practice.</em></h2>
+                    <p>My name is Tyron, and I love making the web feel more human. I combine clean code with a sharp eye for detail to create experiences that are clear, useful, and enjoyable to use.</p>
+                    <p>When I'm away from my editor, I'm exploring new technologies, contributing to open source, and finding the next interesting problem to solve.</p>
+                    <div class="skills"><span>HTML / CSS</span><span>JavaScript</span><span>Responsive design</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="projects section-grid" id="projects">
+            <div class="section-label">02 / Selected work</div>
+            <div class="projects-content">
+                <div class="section-heading">
+                    <h2>A few things<br><em>I've made.</em></h2>
+                    <p>A growing collection of experiments, interfaces, and practical projects.</p>
+                </div>
+                <div class="project-list">
+                    <a class="project-row" href="SHOPPING/index.html">
+                        <span class="project-number">01</span><span class="project-name">Shopping experience</span><span class="project-type">E-commerce / UI</span><span class="project-arrow" aria-hidden="true">↗</span>
+                    </a>
+                    <a class="project-row" href="HOTEL/index.html">
+                        <span class="project-number">02</span><span class="project-name">Hotel booking concept</span><span class="project-type">Hospitality / Web</span><span class="project-arrow" aria-hidden="true">↗</span>
+                    </a>
+                    <a class="project-row" href="bookings/index.html">
+                        <span class="project-number">03</span><span class="project-name">The Good Cut · Barber bookings</span><span class="project-type">Booking / Web app</span><span class="project-arrow" aria-hidden="true">↗</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact" id="contact">
+            <p class="eyebrow">03 / Start a conversation</p>
+            <h2>Have an idea?<br><em>Let's make it real.</em></h2>
+            <a class="button button-light" href="mailto:dohzatyron0@gmail.com">dohzatyron0@gmail.com <span aria-hidden="true">↗</span></a>
+            <p class="phone">or call <a href="tel:0768310269">076 831 0269</a></p>
+        </section>
+    </main>
+
+    <footer><span>© 2026 Tyron's Portfolio</span><span>Made with curiosity and care.</span></footer>
 </body>
-
 </html>

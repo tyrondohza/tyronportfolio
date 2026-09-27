@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Book a cut, shave, massage, or colour appointment at The Good Cut barber house.">
+	<title>The Good Cut | Barber House</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+	<script src="node.js" defer></script>
+</head>
+<body>
+	<header class="site-header">
+		<a class="brand" href="#top" aria-label="The Good Cut home"><span class="brand-mark">GC</span><span>THE GOOD CUT<small>BARBER HOUSE</small></span></a>
+		<nav class="main-nav" aria-label="Main navigation">
+			<a href="#book">Book a visit</a>
+			<a href="#barbers">Our barbers</a>
+			<a href="#visits">My visits</a>
+		</nav>
+		<button class="account-button" id="accountButton" type="button">Sign in <span aria-hidden="true">↗</span></button>
+	</header>
+
+	<main id="top">
+		<section class="hero" aria-labelledby="heroTitle">
+			<div class="hero-copy">
+				<p class="eyebrow"><span class="live-dot"></span> WALK INS WELCOME · BOOK AHEAD</p>
+				<h1 id="heroTitle">A good cut<br>changes <em>everything.</em></h1>
+				<p class="hero-description">Your chair is waiting. Find your barber, pick your service, and take a little time for yourself.</p>
+				<a class="primary-link" href="#book">Find your time <span aria-hidden="true">↓</span></a>
+				<div class="hero-note"><span class="note-stars" aria-label="5 out of 5 stars">★★★★★</span><span>Good people. Good work. Every time.</span></div>
+			</div>
+			<div class="hero-photo" role="img" aria-label="Barber giving a client a fresh haircut">
+				<div class="photo-caption"><span>YOUR NEIGHBOURHOOD BARBER</span><strong>Come as you are.</strong></div>
+			</div>
+			<div class="hero-index" aria-hidden="true">01 <span></span> 04</div>
+		</section>
+
+		<section class="booking-section" id="book">
+			<div class="section-intro">
+				<p class="eyebrow">MAKE SOME TIME FOR YOU</p>
+				<h2>Book your <em>chair.</em></h2>
+				<p>Pick what you need. We’ll take it from there.</p>
+			</div>
+			<form class="booking-form" id="bookingForm">
+				<fieldset class="service-fieldset">
+					<legend><span class="step-number">01</span> What are we doing today?</legend>
+					<div class="service-grid" id="serviceGrid">
+						<label class="service-option"><input type="checkbox" name="service" value="Haircut"><span class="service-name">Haircut</span><span class="service-meta">30 min <b>$18</b></span></label>
+						<label class="service-option"><input type="checkbox" name="service" value="Beard shave"><span class="service-name">Beard shave</span><span class="service-meta">20 min <b>$12</b></span></label>
+						<label class="service-option"><input type="checkbox" name="service" value="Head shave"><span class="service-name">Head shave</span><span class="service-meta">25 min <b>$15</b></span></label>
+						<label class="service-option"><input type="checkbox" name="service" value="Head + beard"><span class="service-name">Head + beard</span><span class="service-meta">45 min <b>$25</b></span></label>
+						<label class="service-option"><input type="checkbox" name="service" value="Massage"><span class="service-name">Relaxing massage</span><span class="service-meta">30 min <b>$20</b></span></label>
+						<label class="service-option"><input type="checkbox" name="service" value="Dye application"><span class="service-name">Dye application</span><span class="service-meta">45 min <b>$28</b></span></label>
+					</div>
+				</fieldset>
+
+				<div class="booking-details">
+					<label class="field-label" for="barberSelect"><span class="step-number">02</span> Choose your barber
+						<select id="barberSelect" name="barber" required><option value="">Select a barber</option></select>
+					</label>
+					<label class="field-label" for="bookingDate"><span class="step-number">03</span> Pick a date
+						<input id="bookingDate" name="date" type="date" required>
+					</label>
+					<label class="field-label" for="bookingTime"><span class="step-number">04</span> Pick a time
+						<select id="bookingTime" name="time" required><option value="">Choose a barber and date first</option></select>
+					</label>
+				</div>
+
+				<fieldset class="payment-fieldset">
+					<legend><span class="step-number">05</span> How would you like to pay?</legend>
+					<div class="payment-options">
+						<label class="payment-option"><input type="radio" name="payment" value="Cash" checked><span><strong>Cash</strong><small>Pay at the shop</small></span></label>
+						<label class="payment-option"><input type="radio" name="payment" value="Mobile money"><span><strong>Mobile money</strong><small>Pay at the shop</small></span></label>
+					</div>
+					<p class="payment-note">Online mobile payments are not connected yet. Your choice will be saved with the booking.</p>
+				</fieldset>
+
+				<div class="booking-submit-row">
+					<p id="bookingTotal">Choose a service to see your total.</p>
+					<button class="primary-button" type="submit">Request a booking <span aria-hidden="true">↗</span></button>
+				</div>
+				<p class="form-message" id="bookingMessage" role="status" aria-live="polite"></p>
+			</form>
+		</section>
+
+		<section class="barbers-section" id="barbers">
+			<div class="section-topline"><div><p class="eyebrow">GOOD HANDS, GOOD COMPANY</p><h2>Meet your <em>barbers.</em></h2></div><p>Four chairs. Four different styles.<br>One very good shop.</p></div>
+			<div class="barber-grid" id="barberGrid" aria-live="polite"></div>
+		</section>
+
+		<section class="visits-section" id="visits">
+			<div class="visits-heading"><div><p class="eyebrow">YOUR TIME, YOURS</p><h2>Upcoming <em>visits.</em></h2></div><p id="visitsHint">Sign in to see the bookings on this device.</p></div>
+			<div class="visits-list" id="visitsList"><p class="empty-state">Your next great haircut starts with a booking.</p></div>
+		</section>
+
+		<section class="review-section" id="reviews">
+			<div><p class="eyebrow">LEAVE US LOOKING GOOD</p><h2>How was your <em>visit?</em></h2><p>Already stopped by? Tell us how we did.</p></div>
+			<form id="reviewForm" class="review-form">
+				<label for="reviewBarber">Your barber</label>
+				<select id="reviewBarber" required><option value="">Choose your barber</option></select>
+				<label for="reviewRating">Your rating</label>
+				<select id="reviewRating" required><option value="">Choose a rating</option><option value="5">5 stars · Excellent</option><option value="4">4 stars · Great</option><option value="3">3 stars · Good</option><option value="2">2 stars · Could be better</option><option value="1">1 star · Needs work</option></select>
+				<label for="reviewText">A few words <span>(optional)</span></label>
+				<textarea id="reviewText" rows="3" maxlength="240" placeholder="What stood out about your visit?"></textarea>
+				<button class="outline-button" type="submit">Leave a review <span aria-hidden="true">↗</span></button>
+				<p class="form-message" id="reviewMessage" role="status" aria-live="polite"></p>
+			</form>
+		</section>
+	</main>
+
+	<footer class="site-footer"><a class="brand" href="#top"><span class="brand-mark">GC</span><span>THE GOOD CUT<small>BARBER HOUSE</small></span></a><p>Good work, good company. See you soon.</p><span>© 2026 THE GOOD CUT</span></footer>
+
+	<dialog class="account-dialog" id="accountDialog" aria-labelledby="dialogTitle">
+		<div class="dialog-top"><a class="brand" href="#top"><span class="brand-mark">GC</span><span>THE GOOD CUT<small>BARBER HOUSE</small></span></a><button class="close-button" type="button" id="closeDialog" aria-label="Close sign in">×</button></div>
+		<div id="authView">
+			<p class="eyebrow">GOOD TO HAVE YOU</p>
+			<h2 id="dialogTitle">Sign in <em>or join us.</em></h2>
+			<div class="auth-tabs" role="tablist" aria-label="Account action"><button type="button" class="auth-tab active" data-mode="signin" role="tab" aria-selected="true">Sign in</button><button type="button" class="auth-tab" data-mode="signup" role="tab" aria-selected="false">Create account</button></div>
+			<form id="authForm">
+				<label id="nameFieldWrap" class="auth-field hidden" for="authName">Your name<input id="authName" name="name" autocomplete="name"></label>
+				<label class="auth-field" for="authEmail">Email address<input id="authEmail" name="email" type="email" autocomplete="email" required></label>
+				<label class="auth-field" for="authPassword">Password<input id="authPassword" name="password" type="password" autocomplete="current-password" minlength="4" required></label>
+				<label class="auth-field hidden" id="roleFieldWrap" for="authRole">I’m signing in as<select id="authRole" name="role"><option value="client">Client</option><option value="barber">Barber</option></select></label>
+				<label class="auth-field hidden" id="staffFieldWrap" for="authBarber">My barber profile<select id="authBarber" name="barber"></select></label>
+				<button class="primary-button auth-submit" type="submit">Sign in <span aria-hidden="true">↗</span></button>
+				<p class="form-message" id="authMessage" role="status" aria-live="polite"></p>
+			</form>
+			<p class="demo-note">Demo prototype: accounts and bookings are saved only in this browser. Do not use a real password.</p>
+		</div>
+		<div class="staff-view hidden" id="staffView">
+			<p class="eyebrow">BARBER DESK</p>
+			<h2 id="staffTitle">Your <em>chair.</em></h2>
+			<p>Set your status so clients know when they can book you.</p>
+			<div class="staff-status-control"><span id="staffStatusText">Available for bookings</span><button id="staffStatusButton" type="button" class="status-toggle" aria-pressed="true">Mark as booked</button></div>
+			<h3>Today's appointments</h3>
+			<div id="staffAppointments" class="staff-appointments"></div>
+			<button class="outline-button signout-button" id="signOutButton" type="button">Sign out</button>
+		</div>
+	</dialog>
+</body>
+</html>
